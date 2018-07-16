@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/balzss/cli-typer.svg?branch=master)](https://travis-ci.org/balzss/cli-typer)
+[![Build Status](https://travis-ci.org/ApolloBian/Transcription.svg?branch=master)](https://travis-ci.org/ApolloBian/Transcription)
 
 Practice touch typing in the commandline and measure your skills.
 Coauthored by [qwhex](https://github.com/qwhex).
