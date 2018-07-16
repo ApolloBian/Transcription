@@ -12,7 +12,6 @@ script:
 notifications:
   email:
     recipients:
-      - qwhexz@gmail.com
-      - balazs.saros@gmail.com
+      - bian_tianling@icloud.com
     on_success: never
     on_failure: always
