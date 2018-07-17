@@ -5,8 +5,6 @@ Practice typing anything you like! Code, words, fictions, you name it.
 ![cli-typer demo gif](resources/out.gif)
 
 ## Install
-
-
 ##### manually
 ```
 git clone https://github.com/ApolloBian/Transcription.git
@@ -15,14 +13,23 @@ npm install .  # optional
 node app.js
 ```
 
-## Dependecies
+## Roadmap
+I have completed the basic functions. But there are still features to add. If you are interested in the following features, 
+feel free to contact me!
+ - [ ] add coding mode:
+    - support auto indention
+ - [ ] support `^H` for deletion
+ - [ ] show more lines for longer text (code/fiction)
+ - [ ] add word list
 
+
+## Dependecies
 - [node.js](https://github.com/nodejs/node) >= 6.4.0
 - ... That's it!
 
 ## Usage
 ```
-cli-typer [options]
+node app.js [options]
 ```
 
 ##### Options:
@@ -38,5 +45,4 @@ cli-typer [options]
 When called with the `-s, --save` option, results will be written to a file at the given path. Results are appended to the end of a tab-separated file so you can track your progress over time.
 
 ## Wordlists
-
 You can use any text files as wordlist.
