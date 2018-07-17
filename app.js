@@ -133,9 +133,9 @@ function printStats() {
 
 function initConfig() {
     return {
-        wordsPerLine: argvParser(['-w', '--words'], 9, validateIntArg),
-        givenSeconds: argvParser(['-t', '--time'], 60, validateIntArg),
-        inputFile: argvParser(['-i', '--input'], __dirname + '/data/mostCommon1000.txt'),
+        wordsPerLine: argvParser(['-w', '--words'], 1, validateIntArg),
+        givenSeconds: argvParser(['-t', '--time'], 600, validateIntArg),
+        inputFile: argvParser(['-i', '--input'], __dirname + '/data/tensorflow_ops/rnn.py'),
         verbose: flagExists('V', 'verbose'),
         debug: flagExists('d', 'debug'),
         savePath: argvParser(['-s', '--save'], false)
@@ -212,9 +212,9 @@ function shuffle(obj) {
 
 function *lineGenerator(path, numberOfWords) {
     const words = fs.readFileSync(path, 'utf8').split('\n');
-    const shuffledWords = shuffle(words);
-    for (let i = 0; i+numberOfWords < shuffledWords.length-1; i += numberOfWords) {
-        yield shuffledWords.slice(i, i + numberOfWords).join(' ');
+    // const shuffledWords = shuffle(words);
+    for (let i = 0; i+numberOfWords < words.length-1; i += numberOfWords) {
+        yield words.slice(i, i + numberOfWords).join(' ');
     }
 }
 
