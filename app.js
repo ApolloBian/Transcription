@@ -198,17 +198,17 @@ function random(min, max) {
     return min + Math.floor(Math.random() * (max - min + 1));
 }
 
-function shuffle(obj) {
-    let sample = obj.slice();
-    const last = sample.length - 1;
-    for (let index = 0; index < sample.length; index++) {
-        let rand = random(index, last);
-        let temp = sample[index];
-        sample[index] = sample[rand];
-        sample[rand] = temp;
-    }
-    return sample.slice();
-}
+// function shuffle(obj) {
+//     let sample = obj.slice();
+//     const last = sample.length - 1;
+//     for (let index = 0; index < sample.length; index++) {
+//         let rand = random(index, last);
+//         let temp = sample[index];
+//         sample[index] = sample[rand];
+//         sample[rand] = temp;
+//     }
+//     return sample.slice();
+// }
 
 function *lineGenerator(path, numberOfWords) {
     const words = fs.readFileSync(path, 'utf8').split('\n');
