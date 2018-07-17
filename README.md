@@ -1,22 +1,17 @@
 [![Build Status](https://travis-ci.org/ApolloBian/Transcription.svg?branch=master)](https://travis-ci.org/ApolloBian/Transcription)
 
-Practice touch typing in the commandline and measure your skills.
-Coauthored by [qwhex](https://github.com/qwhex).
+Practice typing anything you like! Code, words, fictions, you name it.
 
-![cli-typer demo gif](https://raw.githubusercontent.com/balzss/cli-typer/master/demo.gif)
+![cli-typer demo gif](resources/out.gif)
 
 ## Install
 
-##### with npm
-```
-npm install -g balzss/cli-typer
-```
 
 ##### manually
 ```
-git clone https://github.com/balzss/cli-typer.git
-cd cli-typer
-npm install -g .  # optional
+git clone https://github.com/ApolloBian/Transcription.git
+cd Transcription
+npm install .  # optional
 node app.js
 ```
 
@@ -44,10 +39,4 @@ When called with the `-s, --save` option, results will be written to a file at t
 
 ## Wordlists
 
-### Linux
-You can find additional wordlists in the `/usr/share/dict` directory and use them like so:
-```
-cli-typer -i /usr/share/dict/words
-```
-
-Install dictionaries on debian-based distributions with the `sudo apt install w[lang]` command, e.g. `sudo apt install wfrench` to install the French wordlist. Check out available packages [here](https://packages.debian.org/sid/wordlist).
+You can use any text files as wordlist.
