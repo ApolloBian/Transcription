@@ -135,7 +135,7 @@ function initConfig() {
     return {
         wordsPerLine: argvParser(['-w', '--words'], 1, validateIntArg),
         givenSeconds: argvParser(['-t', '--time'], 600, validateIntArg),
-        inputFile: argvParser(['-i', '--input'], __dirname + '/data/tensorflow_ops/rnn.py'),
+        inputFile: argvParser(['-i', '--input'], __dirname + '/data/tensorflow_ops/rnn'),
         verbose: flagExists('V', 'verbose'),
         debug: flagExists('d', 'debug'),
         savePath: argvParser(['-s', '--save'], false)
