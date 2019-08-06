@@ -213,6 +213,16 @@ function argvParser(flags, dflt, validateFunction=false) {
 function *lineGenerator(path, numberOfWords) {
     const words = fs.readFileSync(path, 'utf8').split('\n');
     // const shuffledWords = shuffle(words);
+    // length of file: words.length
+    let i = 0;
+    while (true) {
+        yield words.slice(i, i + numberOfWords).join(' ');
+        i += numberOfWords;
+        if (i >= words.length - 1) {
+            i = 0;
+        }
+    }
+
     for (let i = 0; i+numberOfWords < words.length-1; i += numberOfWords) {
         yield words.slice(i, i + numberOfWords).join(' ');
     }
