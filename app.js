@@ -10,7 +10,6 @@ if (flagExists('h', 'help')) {
     console.log('  cli-typer [options]');
     console.log('\nOptions:');
     console.log('  -t, --time\t\tGiven time in seconds to complete the test');
-    console.log('  -w, --words\t\tNumber of words to display per line');
     console.log('  -i, --input\t\tPath to a wordlist file with new line separated words');
     console.log('  -V, --verbose\t\tShow settings on start');
     console.log('  -s, --save\t\tPath to file for saving results');
@@ -42,6 +41,7 @@ const lineGen = lineGenerator(CONFIG.inputFile, CONFIG.wordsPerLine);
 let text, nextText, cursor;
 
 function init(){
+    console.clear()
     stdin.setRawMode(true);
     stdin.resume();
     stdin.setEncoding('utf8');
@@ -49,13 +49,27 @@ function init(){
     if (CONFIG.verbose) {
         printConfig(CONFIG);
     }
-    console.log('\n  Start typing the words below:\n');
+    console.log('Welcome to Transcript, a typing software I made for my lovely girlfriend');
+    console.log('Start typing the words in the box.')
+    console.log('Use the following keymap as reference to key positions')
+    console.log('Try NOT to look at your keyboard :D\n');
 
     text = lineGen.next().value;
     nextText = lineGen.next().value;
 
-    process.stdout.write(boxTop() + '\n' + boxText(text) + '\n' + boxText(nextText) + '\n' + boxSeparator() + '\n│ ');
+    process.stdout.write(highlightUsagePrompt(text[0]) + '\n' + boxTop() + '\n' + boxText(text) + '\n' + boxText(nextText) + '\n' + boxSeparator() + '\n> ');
     cursor = 0;
+}
+
+function highlightUsagePrompt(charToHighlight) {
+    if (charToHighlight === ' ') {
+        return usagePrompt + '\n' + '       ' + SPECIAL.GREEN_BG + '_______' + SPECIAL.RESET;
+    } else if (usagePrompt.includes(charToHighlight)) {
+        return usagePrompt.replace(charToHighlight, SPECIAL.GREEN_BG + charToHighlight + SPECIAL.RESET) + '\n' + '       ' + '_______' + SPECIAL.RESET;
+;
+    }
+    return usagePrompt + '\n' + '       ' + '_______' + SPECIAL.RESET;
+;
 }
 
 function removeAnsiEscape(text) {
@@ -101,6 +115,10 @@ function drawBox() {
     boxDrawIsLocked = true;
 
     // Erase the whole thing and display the next words to type
+    // stdout.clearLine();
+    // stdout.moveCursor(0, -4);
+    stdout.clearLine();
+    stdout.moveCursor(0, -5);
     stdout.clearLine();
     stdout.moveCursor(0, -2);
     stdout.clearLine();
@@ -109,7 +127,8 @@ function drawBox() {
     stdout.moveCursor(0, -1);
     stdout.clearLine();
     stdout.cursorTo(0);
-    stdout.write(boxTop() + '\n' + boxText(results + text.substring(cursor)) + '\n' + boxText(nextText) + '\n\n│ ' + wrote);
+    // stdout.write(highlightUsagePrompt(text[cursor]));
+    stdout.write(highlightUsagePrompt(text[cursor]) + '\n' + boxTop() + '\n' + boxText(results + text.substring(cursor)) + '\n' + boxText(nextText) + '\n\n> ' + wrote);
 
     boxDrawIsLocked = false;
 }
@@ -134,7 +153,8 @@ function printStats() {
 
 function initConfig() {
     return {
-        wordsPerLine: argvParser(['-w', '--words'], 1, validateIntArg),
+        // wordsPerLine: argvParser(['-w', '--words'], 1, validateIntArg),
+        wordsPerLine: 1,
         givenSeconds: argvParser(['-t', '--time'], 600, validateIntArg),
         inputFile: argvParser(['-i', '--input'], __dirname + '/data/tensorflow_ops/rnn'),
         verbose: flagExists('V', 'verbose'),
@@ -273,6 +293,13 @@ let wrote = '';
 let started = false;
 let startTime = Date.now();
 let boxDrawIsLocked = false;
+
+// let usage_prompt = 'abc' + SPECIAL.RED_BG +'d' + SPECIAL.RESET;
+let usagePrompt = `1 2 3 4 5 6 7 8 9 0 -
+ q w e r t y u i o p [ ] \\
+  a s d f g h j k l ; \'
+   z x c v b n m , . /`
+
 
 // TODO explicit code / variable name standards
 let STATS = {

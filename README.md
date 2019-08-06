@@ -1,25 +1,22 @@
 [![Build Status](https://travis-ci.org/ApolloBian/Transcription.svg?branch=master)](https://travis-ci.org/ApolloBian/Transcription)
 
-Practice typing anything you like! Code, words, fictions, you name it.
-
-![cli-typer demo gif](resources/out.gif)
+This repo is dedicated to my girlfriend :heart:, in order to help her practice typing :D.
 
 ## Install
 ##### manually
 ```
 git clone https://github.com/ApolloBian/Transcription.git
 cd Transcription
-npm install .  # optional
+npm install .
 node app.js
 ```
 
 ## Roadmap
-feel free to contact me!
  - [x] support `^H` for deletion
+ - [x] prompt for key position
  - [ ] wrap long lines
- - [ ] add coding mode:
+ - [ ] add coding mode to enhance copying source code:
     - support auto indention
- - [ ] add word list
 
 
 ## Dependecies
@@ -27,14 +24,14 @@ feel free to contact me!
 - ... That's it!
 
 ## Usage
+To get started, copy & past the following line to start a two-minute practice:
 ```
-node app.js [options]
+node app.js -t 120 -i ./data/gre600_filtered.txt
 ```
 
 ##### Options:
 - `-h, --help` Show help
 - `-t, --time` Given time in seconds to complete the test
-- `-w, --words` Number of words to display per line
 - `-i, --input` Path to a wordlist file with new line separated words
 - `-V, --verbose` Show settings on start
 - `-s, --save` Path to file for saving results
