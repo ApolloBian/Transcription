@@ -14,12 +14,11 @@ node app.js
 ```
 
 ## Roadmap
-I have completed the basic functions. But there are still features to add. If you are interested in the following features, 
 feel free to contact me!
+ - [x] support `^H` for deletion
+ - [ ] wrap long lines
  - [ ] add coding mode:
     - support auto indention
- - [ ] support `^H` for deletion
- - [ ] show more lines for longer text (code/fiction)
  - [ ] add word list
 
 

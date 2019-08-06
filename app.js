@@ -26,6 +26,7 @@ const fs = require('fs');
 
 const SPECIAL = {
     CTRL_C: '\u0003',
+    CTRL_H: '\u0008',
     BACKSPACE: '\u007f',
     GREEN_BG: '\x1b[42m',
     RED_BG: '\x1b[41m',
@@ -294,10 +295,18 @@ stdin.on('data', key => {
         start();
     }
 
+    var result = "";
+    for (i=0; i<key.length; i++) {
+        hex = key.charCodeAt(i).toString(16);
+        result += ("000"+hex).slice(-4);
+    }
+    // console.log(result);
+
+
     // Exit on ctrl-c
     if (key === SPECIAL.CTRL_C) {
         process.exit();
-    } else if (key === SPECIAL.BACKSPACE) {
+    } else if (key === SPECIAL.BACKSPACE || key === SPECIAL.CTRL_H) {
         // Do nothing on the beginning of the line
         if (cursor === 0) {return;}
 
